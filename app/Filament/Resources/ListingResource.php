@@ -28,7 +28,7 @@ class ListingResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->afterStateUpdated(fn(Set $set, ?string $state)=> $set('slug', Str::slug($state)))
-                    ->live(debounce: 250)
+                    ->live(debounce: 250) // melakukan update di slug dengan jarak 2,5 detik
                     ->maxLength(255),
                 Forms\Components\TextInput::make('slug')
                     ->required()
