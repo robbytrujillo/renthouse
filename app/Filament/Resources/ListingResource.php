@@ -31,11 +31,12 @@ class ListingResource extends Resource
                     ->live(debounce: 250) // melakukan update di slug dengan jarak 2,5 detik
                     ->maxLength(255),
                 Forms\Components\TextInput::make('slug')
-                    ->required()
-                    ->maxLength(255),
+                    // ->required()
+                    // ->maxLength(255),
+                    ->disabled(),
                 Forms\Components\Textarea::make('description')
-                    ->required()
-                    ->columnSpanFull(),
+                    ->required(),
+                    // ->columnSpanFull(),
                 Forms\Components\TextInput::make('address')
                     ->required()
                     ->maxLength(255),
@@ -55,24 +56,24 @@ class ListingResource extends Resource
                     ->required()
                     ->numeric()
                     ->default(0),
+                Forms\Components\Checkbox::make('full_support_available')
+                    ->required()
+                    // ->numeric()
+                    ->default(0),
+                Forms\Components\Checkbox::make('gym_area_available')
+                    ->required()
+                    // ->numeric()
+                    ->default(0),
+                Forms\Components\Checkbox::make('mini_cafe_available')
+                    ->required()
+                    // ->numeric()
+                    ->default(0),
+                Forms\Components\Checkbox::make('cinema_available')
+                    ->required()
+                    // ->numeric()
+                    ->default(0),
                 Forms\Components\Textarea::make('attachments')
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('full_support_available')
-                    ->required()
-                    ->numeric()
-                    ->default(0),
-                Forms\Components\TextInput::make('gym_area_available')
-                    ->required()
-                    ->numeric()
-                    ->default(0),
-                Forms\Components\TextInput::make('mini_cafe_available')
-                    ->required()
-                    ->numeric()
-                    ->default(0),
-                Forms\Components\TextInput::make('cinema_available')
-                    ->required()
-                    ->numeric()
-                    ->default(0),
+                ->columnSpanFull(),
             ]);
     }
 
