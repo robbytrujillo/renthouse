@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Set;
 use Str;
+use Filament\Forms\Components\FileUpload;
 
 class ListingResource extends Resource
 {
@@ -57,23 +58,28 @@ class ListingResource extends Resource
                     ->numeric()
                     ->default(0),
                 Forms\Components\Checkbox::make('full_support_available')
-                    ->required()
+                    // ->required()
                     // ->numeric()
                     ->default(0),
                 Forms\Components\Checkbox::make('gym_area_available')
-                    ->required()
+                    // ->required()
                     // ->numeric()
                     ->default(0),
                 Forms\Components\Checkbox::make('mini_cafe_available')
-                    ->required()
+                    // ->required()
                     // ->numeric()
                     ->default(0),
                 Forms\Components\Checkbox::make('cinema_available')
-                    ->required()
+                    // ->required()
                     // ->numeric()
                     ->default(0),
-                Forms\Components\Textarea::make('attachments')
-                ->columnSpanFull(),
+                FileUpload::make('attachments')
+                    ->directory('Listings')
+                    ->image()
+                    ->openable()
+                    ->multiple()
+                    ->reorderable()
+                    ->appendFiles()
             ]);
     }
 
