@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Set;
 use Str;
 use Filament\Forms\Components\FileUpload;
+use Filament\Support\Enums\FontWeight;
 
 class ListingResource extends Resource
 {
@@ -88,7 +89,8 @@ class ListingResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
-                    ->searchable(),
+                    // ->searchable(),
+                    ->weight(FontWeight::Bold),
                 Tables\Columns\TextColumn::make('slug')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('address')
