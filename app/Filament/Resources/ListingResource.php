@@ -140,6 +140,7 @@ class ListingResource extends Resource
                 Tables\Actions\DeleteAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\ForceDeleteAction::make(),
+                Tables\Actions\RestoreAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
