@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Listing;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -16,8 +17,11 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Admin RentHouse',
+            'name'  => 'Admin RentHouse',
             'email' => 'admin@renthouse.test',
+            'role'  => 'admin'
         ]);
+
+        $listings = Listing::factory(10)->create();
     }
 }
