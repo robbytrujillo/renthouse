@@ -7,6 +7,7 @@ use App\Filament\Resources\TransactionResource\RelationManagers;
 use App\Models\Transaction;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Support\Enums\FontWeight;
 use Filament\Tables;
@@ -126,6 +127,12 @@ class TransactionResource extends Resource
                         Transaction::find($transaction->id)->update([
                             'status' => 'approved',
                         ]);
+                        Notification::make()
+                            ->success()
+                            ->title('Transaction Approved!')
+                            ->body('Transaction has been approved Successfully!')
+                            ->icon('heroicon-o-check')
+                            ->send();
                     })
                     ->hidden(fn(Transaction $transaction) => $transaction->status !== 'waiting')
             ])
