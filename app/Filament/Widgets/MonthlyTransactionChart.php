@@ -2,7 +2,9 @@
 
 namespace App\Filament\Widgets;
 
+use App\Models\Transaction;
 use Filament\Widgets\ChartWidget;
+use Flowframe\Trend\Trend;
 
 class MonthlyTransactionChart extends ChartWidget
 {
@@ -11,6 +13,7 @@ class MonthlyTransactionChart extends ChartWidget
 
     protected function getData(): array
     {
+        $data = Trend::model(Transaction::class)->between(start: now()->startOfMonth(), end: now()->endOfMonth());
         return [
             'datasets' => [
                 [
