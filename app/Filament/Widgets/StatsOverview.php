@@ -12,7 +12,15 @@ use Illuminate\Support\Number;
 class StatsOverview extends BaseWidget
 {
     private function getPercentage(int $from,int $to) {
+        // Jika from = 0
+        if ($from === 0) {
+            if ($to === 0) {
+                return 0; // Tidak ada perubahan
+            }
+            return 100; // Dari nol ke ada nilai, anggap 100% naik
+        }
         return $to - $from / ($to + $from / 2) * 100;
+        // return $to - (($from / ($to + ($from / 2))) * 100);
     }
     protected function getStats(): array
     {
