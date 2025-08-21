@@ -6,4 +6,5 @@ Route::get('/', function () {
     return ['Laravel' => app()->version()];
 });
 
-require __DIR__.'/auth.php';
+// fokus ke end point, pindahkan ke routes/api.php
+// require __DIR__.'/auth.php';
